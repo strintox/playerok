@@ -1,0 +1,753 @@
+/* Common styles for both pages */
+:root {
+    --bg-color: #1e2126;
+    --card-bg-color: #262a33;
+    --text-color: #ffffff;
+    --muted-text-color: #919191;
+    --accent-color: #4285f4;
+    --warning-color: #ffce00;
+    --success-color: #4caf50;
+    --error-color: #ff3d71;
+    --border-radius: 8px;
+    --playerok-color: #4285f4;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* Модальное окно уведомления */
+.notification-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(30, 33, 38, 0.95);
+    z-index: 1000;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: none;
+    animation: modal-appear 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes modal-appear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.notification-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.notification-message {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.notification-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.3s;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(66, 133, 244, 0.3);
+}
+
+.notification-button:hover {
+    background-color: #3b78e7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(66, 133, 244, 0.4);
+}
+
+.notification-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(66, 133, 244, 0.3);
+}
+
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+    animation: overlay-appear 0.3s ease;
+}
+
+@keyframes overlay-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* For restricted page */
+.warning-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 0;
+}
+
+.playerok-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.playerok-header:hover {
+    transform: scale(1.05);
+}
+
+.info-card {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: card-appear 0.5s ease-out;
+}
+
+@keyframes card-appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.warning-icon {
+    font-size: 48px;
+    color: var(--warning-color);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.warning-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.warning-subtitle {
+    font-size: 16px;
+    color: var(--muted-text-color);
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* ПК-блокировка */
+.pc-message-box {
+    background-color: #262a33;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 59, 113, 0.3);
+    animation: message-appear 0.4s ease-out;
+}
+
+@keyframes message-appear {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pc-block-title {
+    color: var(--error-color);
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.restriction-text {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Playerok logo styling */
+.playerok-link {
+    color: var(--playerok-color);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.playerok-link:hover {
+    transform: translateY(-2px);
+    text-shadow: 0 2px 10px rgba(66, 133, 244, 0.5);
+}
+
+.playerok-link span {
+    font-weight: 600;
+}
+
+.playerok-link .blue {
+    color: var(--playerok-color);
+}
+
+.playerok-link .ok {
+    color: white;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(66, 133, 244, 0.3);
+}
+
+.button:hover {
+    background-color: #3b78e7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(66, 133, 244, 0.4);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(66, 133, 244, 0.3);
+}
+
+/* For account page */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--card-bg-color);
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-button {
+    font-size: 24px;
+    margin-right: 16px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    opacity: 0.8;
+    transform: translateX(-3px);
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    color: var(--muted-text-color);
+}
+
+.playerok-logo {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.playerok-logo:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+.account-preview {
+    position: relative;
+    width: 100%;
+}
+
+.account-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.price-tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: rgba(30, 33, 38, 0.85);
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: price-appear 0.5s ease-out;
+}
+
+@keyframes price-appear {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.discount-badge {
+    background-color: var(--error-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.price-reduced {
+    color: var(--error-color);
+    font-weight: bold;
+    font-size: 22px;
+    margin-right: 8px;
+}
+
+.price-original {
+    color: var(--muted-text-color);
+    text-decoration: line-through;
+    font-size: 16px;
+}
+
+.section {
+    padding: 20px;
+    margin-bottom: 16px;
+    animation: section-appear 0.5s ease-out;
+}
+
+@keyframes section-appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.description-section {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--card-bg-color);
+    margin-top: 10px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    animation: section-appear 0.6s ease-out;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.account-tags {
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: #00e676;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.rating {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.rating-stars {
+    color: var(--warning-color);
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.review-count {
+    color: var(--accent-color);
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.purchase-card {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.purchase-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.purchase-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.purchase-text {
+    color: var(--muted-text-color);
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.account-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background-color 0.2s ease;
+}
+
+.account-detail:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.detail-label {
+    color: var(--muted-text-color);
+    font-size: 15px;
+}
+
+.detail-value {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.buy-button {
+    background-color: var(--error-color);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(255, 61, 113, 0.3);
+}
+
+.buy-button:hover {
+    background-color: #ff2b65;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 61, 113, 0.4);
+}
+
+.buy-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 61, 113, 0.3);
+}
+
+.guarantee-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.guarantee-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: rgba(66, 133, 244, 0.1);
+}
+
+.guarantee-link:hover {
+    color: white;
+    background-color: rgba(66, 133, 244, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Utility classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-16 {
+    margin-top: 16px;
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.p-16 {
+    padding: 16px;
+}
+
+/* Mobile detection banner */
+.mobile-detection-banner {
+    background-color: var(--card-bg-color);
+    padding: 16px;
+    border-left: 4px solid var(--warning-color);
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 2px 6px rgba(255, 206, 0, 0.1);
+    animation: banner-appear 0.4s ease-out;
+}
+
+@keyframes banner-appear {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-steps {
+    list-style-position: inside;
+    padding-left: 16px;
+    margin: 15px 0;
+}
+
+.mobile-steps li {
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    transition: transform 0.2s ease;
+}
+
+.mobile-steps li:hover {
+    transform: translateX(3px);
+}
+
+.success-check {
+    color: var(--success-color);
+    margin-right: 8px;
+}
+
+.account-info-box {
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    animation: info-appear 0.5s ease-out;
+}
+
+@keyframes info-appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    flex: 1;
+    margin: 0 5px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.check-item {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    line-height: 1.6;
+    transition: transform 0.2s ease;
+}
+
+.check-item:hover {
+    transform: translateX(3px);
+}
+
+.price {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--error-color);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .info-card {
+        padding: 35px;
+    }
+    
+    .warning-title {
+        font-size: 32px;
+    }
+    
+    .playerok-header {
+        top: 30px;
+        left: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .price-tag {
+        padding: 6px 10px;
+    }
+    
+    .discount-badge {
+        padding: 3px 6px;
+        font-size: 12px;
+        margin: 0 5px;
+    }
+    
+    .price-reduced {
+        font-size: 18px;
+    }
+    
+    .price-original {
+        font-size: 14px;
+    }
+    
+    .playerok-link {
+        font-size: 20px;
+    }
+    
+    .info-card {
+        padding: 20px;
+    }
+    
+    .stats {
+        flex-direction: column;
+    }
+    
+    .stat-box {
+        margin: 5px 0;
+    }
+    
+    .playerok-header {
+        left: 20px;
+        top: 15px;
+    }
+    
+    .mobile-steps li {
+        font-size: 14px;
+    }
+    
+    .warning-title {
+        font-size: 24px;
+    }
+    
+    .button, .buy-button {
+        padding: 15px;
+        font-size: 16px;
+    }
+}

